@@ -39,7 +39,7 @@
         .header-info { text-align: right; }
         .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
 
-        /* Banner McCain */
+        /* Banner McCain Cinemático */
         .story-banner {
             background: linear-gradient(rgba(8, 27, 53, 0.6), rgba(2, 11, 24, 0.95)), url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1500&q=80') center/cover;
             border-radius: 20px; padding: 25px 35px; border: 1px solid var(--glass-border); margin-bottom: 40px; 
@@ -133,7 +133,7 @@
         .stat-val { font-size: 11px; font-weight: 700; color: var(--mccain-yellow); }
         .stat-lbl { font-size: 8px; color: #a2b7d2; text-transform: uppercase; }
 
-        /* Ranking Geral Tabela */
+        /* Tabela do Ranking Geral */
         .action-area { text-align: center; margin: 40px 0; }
         .btn-ranking { background: linear-gradient(135deg, var(--jordan-blue) 0%, #002673 100%); color: white; border: 2px solid var(--mccain-yellow); padding: 14px 40px; font-size: 15px; font-weight: 700; border-radius: 50px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; transition: 0.3s; }
         .btn-ranking:hover { transform: scale(1.03); box-shadow: 0 6px 25px rgba(255, 199, 44, 0.3); }
@@ -176,6 +176,7 @@
         }
         .btn-close-modal:hover { transform: scale(1.05); background: #fff; }
 
+        /* Responsividade Completa Celular */
         @media (max-width: 850px) {
             header { justify-content: center; text-align: center; padding: 15px; }
             .header-logo { justify-content: center; width: 100%; gap: 15px; }
@@ -246,7 +247,7 @@
             </div>
             <div class="kpi-card">
                 <div class="kpi-info">
-                    <h3>Points de Venda Ativados</h3>
+                    <h3>Pontos de Venda Ativados</h3>
                     <h4 id="kpi-pdv">0 <small>PDVs</small></h4>
                     <span id="meta-pdv">Meta JBS: 0 PDVs</span>
                 </div>
@@ -306,126 +307,133 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-close-modal" onclick="fecharModal()">Fechar Figrinha</button>
+            <button class="btn-close-modal" onclick="fecharModal()">Fechar Figurinha</button>
         </div>
     </div>
 
     <script>
         const PASTA_IMAGENS = 'imagens/';
         const AVATAR_PADRAO = 'https://cdn-icons-png.flaticon.com/512/5087/5087579.png';
-        let dadosGlobais = null; // Guarda os dados para busca quando clicar
+        let dadosGlobais = null;
 
         async function carregarDashboard() {
             try {
                 const resposta = await fetch('dados.json');
                 dadosGlobais = await replyJsonObj(resposta);
                 
-                // Preenche KPIs Gerais
-                document.getElementById('kpi-fat').innerText = dadosGlobais.kpis.faturamentoAcumulado;
-                document.getElementById('meta-fat').innerText = `Meta JBS: ${dadosGlobais.kpis.faturamentoMeta}`;
-                document.getElementById('kpi-vol').innerHTML = `${dadosGlobais.kpis.volumeVendas} <small>Pacotes</small>`;
-                document.getElementById('meta-vol').innerText = `Meta JBS: ${dadosGlobais.kpis.volumeMeta} Pacotes`;
-                document.getElementById('kpi-pdv').innerHTML = `${dadosGlobais.kpis.pdvsAtivados} <small>PDVs</small>`;
-                document.getElementById('meta-pdv').innerText = `Meta JBS: ${dadosGlobais.kpis.pdvsMeta} PDVs`;
+                console.log("DADOS RECEBIDOS DO JSON:", dadosGlobais);
+                
+                // Tratamento estrutural de chaves "à prova de falhas" para produção na Vercel
+                const kpis = dadosGlobais.kpis || dadosGlobais.KPIs || {};
+                const podio = dadosGlobais.podio || dadosGlobais.Podio || {};
+                const rankingGeral = dadosGlobais.rankingGeral || dadosGlobais.RankingGeral || [];
 
-                // Renderiza o Pódio com Evento de Clique integrado
-                const podiumHTML = `
-                    <div class="world-cup-sticker sticker-2" onclick="abrirModalVendedor('segundo')">
-                        <div class="sticker-inner">
-                            <div class="sticker-header">
-                                <span class="sticker-country">BRASIL</span>
-                                <span class="sticker-badge">2º</span>
-                            </div>
-                            <div class="player-photo-container">
-                                <img src="${PASTA_IMAGENS}${dadosGlobais.podio.segundo.foto}" class="player-photo" onload="this.style.opacity=1" onerror="this.src='${AVATAR_PADRAO}';this.style.opacity=0.5">
-                                <img src="imagens/CAMISA.png" class="jersey-overlay" onerror="this.src='https://acdn-us.mitiendanube.com/stores/002/499/697/products/camisa-brasil-away-selecao-copa-do-mundo-2026-ii-azul-aqui-e-brasil-direita-patriota-valores-familiar-loja-mantos-da-quebrada-9-dabf8d572db91855b217746420529154-1024-1024.webp'">
-                            </div>
-                            <div class="player-info">
-                                <div class="player-name">${dadosGlobais.podio.segundo.nome}</div>
-                                <div class="player-stat-row">
-                                    <div class="stat-box"><div class="stat-val">${dadosGlobais.podio.segundo.volume}</div><div class="stat-lbl">VOL</div></div>
-                                    <div class="stat-box"><div class="stat-val">${dadosGlobais.podio.segundo.faturamento}</div><div class="stat-lbl">FAT</div></div>
-                                    <div class="stat-box"><div class="stat-val">${dadosGlobais.podio.segundo.positivacoes}</div><div class="stat-lbl">POS</div></div>
+                document.getElementById('kpi-fat').innerText = kpis.faturamentoAcumulado || kpis["Faturamento Acumulado"] || "R$ 0,00";
+                document.getElementById('meta-fat').innerText = `Meta JBS: ${kpis.faturamentoMeta || "R$ 150.000,00"}`;
+                document.getElementById('kpi-vol').innerHTML = `${kpis.volumeVendas || 0} <small>Pacotes</small>`;
+                document.getElementById('meta-vol').innerText = `Meta JBS: ${kpis.volumeMeta || "8.500"} Pacotes`;
+                document.getElementById('kpi-pdv').innerHTML = `${kpis.pdvsAtivados || 0} <small>PDVs</small>`;
+                document.getElementById('meta-pdv').innerText = `Meta JBS: ${kpis.pdvsMeta || "400"} PDVs`;
+
+                if (podio.segundo && podio.primeiro && podio.terceiro) {
+                    const podiumHTML = `
+                        <div class="world-cup-sticker sticker-2" onclick="abrirModalVendedor('segundo')">
+                            <div class="sticker-inner">
+                                <div class="sticker-header">
+                                    <span class="sticker-country">BRASIL</span>
+                                    <span class="sticker-badge">2º</span>
+                                </div>
+                                <div class="player-photo-container">
+                                    <img src="${PASTA_IMAGENS}${podio.segundo.foto}" class="player-photo" onload="this.style.opacity=1" onerror="this.src='${AVATAR_PADRAO}';this.style.opacity=0.5">
+                                    <img src="imagens/CAMISA.png" class="jersey-overlay" onerror="this.src='https://acdn-us.mitiendanube.com/stores/002/499/697/products/camisa-brasil-away-selecao-copa-do-mundo-2026-ii-azul-aqui-e-brasil-direita-patriota-valores-familiar-loja-mantos-da-quebrada-9-dabf8d572db91855b217746420529154-1024-1024.webp'">
+                                </div>
+                                <div class="player-info">
+                                    <div class="player-name">${podio.segundo.nome}</div>
+                                    <div class="player-stat-row">
+                                        <div class="stat-box"><div class="stat-val">${podio.segundo.volume}</div><div class="stat-lbl">VOL</div></div>
+                                        <div class="stat-box"><div class="stat-val">${podio.segundo.faturamento}</div><div class="stat-lbl">FAT</div></div>
+                                        <div class="stat-box"><div class="stat-val">${podio.segundo.positivacoes}</div><div class="stat-lbl">POS</div></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="world-cup-sticker sticker-1" onclick="abrirModalVendedor('primeiro')">
-                        <div class="sticker-inner">
-                            <div class="sticker-header">
-                                <span class="sticker-country">BRASIL</span>
-                                <span class="sticker-badge">1º</span>
-                            </div>
-                            <div class="player-photo-container">
-                                <img src="${PASTA_IMAGENS}${dadosGlobais.podio.primeiro.foto}" class="player-photo" onload="this.style.opacity=1" onerror="this.src='${AVATAR_PADRAO}';this.style.opacity=0.5">
-                                <img src="imagens/CAMISA.png" class="jersey-overlay" onerror="this.src='https://acdn-us.mitiendanube.com/stores/002/499/697/products/camisa-brasil-away-selecao-copa-do-mundo-2026-ii-azul-aqui-e-brasil-direita-patriota-valores-familiar-loja-mantos-da-quebrada-9-dabf8d572db91855b217746420529154-1024-1024.webp'">
-                            </div>
-                            <div class="player-info">
-                                <div class="player-name">${dadosGlobais.podio.primeiro.nome}</div>
-                                <div class="player-stat-row">
-                                    <div class="stat-box"><div class="stat-val">${dadosGlobais.podio.primeiro.volume}</div><div class="stat-lbl">VOL</div></div>
-                                    <div class="stat-box"><div class="stat-val">${dadosGlobais.podio.primeiro.faturamento}</div><div class="stat-lbl">FAT</div></div>
-                                    <div class="stat-box"><div class="stat-val">${dadosGlobais.podio.primeiro.positivacoes}</div><div class="stat-lbl">POS</div></div>
+                        <div class="world-cup-sticker sticker-1" onclick="abrirModalVendedor('primeiro')">
+                            <div class="sticker-inner">
+                                <div class="sticker-header">
+                                    <span class="sticker-country">BRASIL</span>
+                                    <span class="sticker-badge">1º</span>
+                                </div>
+                                <div class="player-photo-container">
+                                    <img src="${PASTA_IMAGENS}${podio.primeiro.foto}" class="player-photo" onload="this.style.opacity=1" onerror="this.src='${AVATAR_PADRAO}';this.style.opacity=0.5">
+                                    <img src="imagens/CAMISA.png" class="jersey-overlay" onerror="this.src='https://acdn-us.mitiendanube.com/stores/002/499/697/products/camisa-brasil-away-selecao-copa-do-mundo-2026-ii-azul-aqui-e-brasil-direita-patriota-valores-familiar-loja-mantos-da-quebrada-9-dabf8d572db91855b217746420529154-1024-1024.webp'">
+                                </div>
+                                <div class="player-info">
+                                    <div class="player-name">${podio.primeiro.nome}</div>
+                                    <div class="player-stat-row">
+                                        <div class="stat-box"><div class="stat-val">${podio.primeiro.volume}</div><div class="stat-lbl">VOL</div></div>
+                                        <div class="stat-box"><div class="stat-val">${podio.primeiro.faturamento}</div><div class="stat-lbl">FAT</div></div>
+                                        <div class="stat-box"><div class="stat-val">${podio.primeiro.positivacoes}</div><div class="stat-lbl">POS</div></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="world-cup-sticker sticker-3" onclick="abrirModalVendedor('terceiro')">
-                        <div class="sticker-inner">
-                            <div class="sticker-header">
-                                <span class="sticker-country">BRASIL</span>
-                                <span class="sticker-badge">3º</span>
-                            </div>
-                            <div class="player-photo-container">
-                                <img src="${PASTA_IMAGENS}${dadosGlobais.podio.terceiro.foto}" class="player-photo" onload="this.style.opacity=1" onerror="this.src='${AVATAR_PADRAO}';this.style.opacity=0.5">
-                                <img src="imagens/CAMISA.png" class="jersey-overlay" onerror="this.src='https://acdn-us.mitiendanube.com/stores/002/499/697/products/camisa-brasil-away-selecao-copa-do-mundo-2026-ii-azul-aqui-e-brasil-direita-patriota-valores-familiar-loja-mantos-da-quebrada-9-dabf8d572db91855b217746420529154-1024-1024.webp'">
-                            </div>
-                            <div class="player-info">
-                                <div class="player-name">${dadosGlobais.podio.terceiro.nome}</div>
-                                <div class="player-stat-row">
-                                    <div class="stat-box"><div class="stat-val">${dadosGlobais.podio.terceiro.volume}</div><div class="stat-lbl">VOL</div></div>
-                                    <div class="stat-box"><div class="stat-val">${dadosGlobais.podio.terceiro.faturamento}</div><div class="stat-lbl">FAT</div></div>
-                                    <div class="stat-box"><div class="stat-val">${dadosGlobais.podio.terceiro.positivacoes}</div><div class="stat-lbl">POS</div></div>
+                        <div class="world-cup-sticker sticker-3" onclick="abrirModalVendedor('terceiro')">
+                            <div class="sticker-inner">
+                                <div class="sticker-header">
+                                    <span class="sticker-country">BRASIL</span>
+                                    <span class="sticker-badge">3º</span>
+                                </div>
+                                <div class="player-photo-container">
+                                    <img src="${PASTA_IMAGENS}${podio.terceiro.foto}" class="player-photo" onload="this.style.opacity=1" onerror="this.src='${AVATAR_PADRAO}';this.style.opacity=0.5">
+                                    <img src="imagens/CAMISA.png" class="jersey-overlay" onerror="this.src='https://acdn-us.mitiendanube.com/stores/002/499/697/products/camisa-brasil-away-selecao-copa-do-mundo-2026-ii-azul-aqui-e-brasil-direita-patriota-valores-familiar-loja-mantos-da-quebrada-9-dabf8d572db91855b217746420529154-1024-1024.webp'">
+                                </div>
+                                <div class="player-info">
+                                    <div class="player-name">${podio.terceiro.nome}</div>
+                                    <div class="player-stat-row">
+                                        <div class="stat-box"><div class="stat-val">${podio.terceiro.volume}</div><div class="stat-lbl">VOL</div></div>
+                                        <div class="stat-box"><div class="stat-val">${podio.terceiro.faturamento}</div><div class="stat-lbl">FAT</div></div>
+                                        <div class="stat-box"><div class="stat-val">${podio.terceiro.positivacoes}</div><div class="stat-lbl">POS</div></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                `;
-                document.getElementById('podium-container').innerHTML = podiumHTML;
+                    `;
+                    document.getElementById('podium-container').innerHTML = podiumHTML;
+                }
 
-                // Renderiza a tabela do Ranking Geral
                 let tabelaHTML = '';
-                dadosGlobais.rankingGeral.forEach((item, index) => {
+                rankingGeral.forEach((item, index) => {
                     tabelaHTML += `
                         <tr>
-                            <td class="row-position">${item.posicao}</td>
+                            <td class="row-position">${item.posicao || index+1}</td>
                             <td>
                                 <div class="vendedor-flex">
                                     <img src="${PASTA_IMAGENS}${item.foto}" class="table-avatar" onclick="abrirModalPorPosicao(${index})" onerror="this.src='${AVATAR_PADRAO}'" title="Clique para ver a figurinha">
                                     <span style="font-weight:600; color:#fff;">${item.nome}</span>
                                 </div>
                             </td>
-                            <td>${item.faturamento}</td>
-                            <td>${item.volume}</td>
-                            <td>${item.positivacoes}</td>
+                            <td>${item.faturamento || item.Faturamento || 'R$ 0'}</td>
+                            <td>${item.volume || item.Volume || 0}</td>
+                            <td>${item.positivacoes || item.Positivas || 0}</td>
                         </tr>
                     `;
                 });
                 document.getElementById('tabela-ranking-body').innerHTML = tabelaHTML;
 
             } catch (erro) {
-                console.error("Erro ao carregar dados.json:", erro);
+                console.error("Erro geral no carregamento do painel:", erro);
             }
         }
 
         async function replyJsonObj(res) { return res.json(); }
 
-        /* ================= CONTROLE DE EVENTOS DO MODAL ================= */
+        /* CONTROLE INTERATIVO DO MODAL POPUP */
         function abrirModalVendedor(posicaoPodio) {
             if(!dadosGlobais) return;
-            const objVendedor = dadosGlobais.podio[posicaoPodio];
+            const podio = dadosGlobais.podio || dadosGlobais.Podio || {};
+            const objVendedor = podio[posicaoPodio];
             
             let badgeText = "1º";
             if(posicaoPodio === "segundo") badgeText = "2º";
@@ -436,16 +444,17 @@
 
         function abrirModalPorPosicao(indexTabela) {
             if(!dadosGlobais) return;
-            const objVendedor = dadosGlobais.rankingGeral[indexTabela];
-            preencherEExibirModal(objVendedor, `${objVendedor.posicao}º`);
+            const rankingGeral = dadosGlobais.rankingGeral || dadosGlobais.RankingGeral || [];
+            const objVendedor = rankingGeral[indexTabela];
+            preencherEExibirModal(objVendedor, objVendedor.posicao || `${indexTabela + 1}º`);
         }
 
         function preencherEExibirModal(vendedor, txtColocacao) {
             document.getElementById('modal-pos').innerText = txtColocacao;
             document.getElementById('modal-nome').innerText = vendedor.nome;
-            document.getElementById('modal-vol-val').innerText = vendedor.volume;
-            document.getElementById('modal-fat-val').innerText = vendedor.faturamento;
-            document.getElementById('modal-pos-val').innerText = vendedor.positivacoes;
+            document.getElementById('modal-vol-val').innerText = vendedor.volume || vendedor.Volume || "0";
+            document.getElementById('modal-fat-val').innerText = vendedor.faturamento || vendedor.Faturamento || "R$ 0";
+            document.getElementById('modal-pos-val').innerText = vendedor.positivacoes || vendedor.Positivas || "0";
             
             const imgModal = document.getElementById('modal-img');
             imgModal.src = `${PASTA_IMAGENS}${vendedor.foto}`;
@@ -459,7 +468,6 @@
         }
 
         function fecharModalNoFundo(e) {
-            // Se clicar no fundo desfocado (fora da figurinha), fecha o modal
             if(e.target.id === "stickerModal") {
                 fecharModal();
             }
