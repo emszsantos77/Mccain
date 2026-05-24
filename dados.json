@@ -1,0 +1,235 @@
+{
+  "kpis": {
+    "faturamentoAcumulado": "R$ 15.905,41",
+    "faturamentoMeta": "R$ 150.000,00",
+    "volumeVendas": "935",
+    "volumeMeta": "8.500",
+    "pdvsAtivados": "55",
+    "pdvsMeta": "400"
+  },
+  "podio": {
+    "primeiro": {
+      "nome": "FABIO SILVA",
+      "foto": "FABIO SILVA.png",
+      "volume": "272",
+      "faturamento": "4,7K",
+      "positivacoes": "7"
+    },
+    "segundo": {
+      "nome": "HENRIQUE RAMON",
+      "foto": "HENRIQUE RAMON.png",
+      "volume": "180",
+      "faturamento": "3,0K",
+      "positivacoes": "8"
+    },
+    "terceiro": {
+      "nome": "PROMOTOR MERCH",
+      "foto": "PROMOTOR.png",
+      "volume": "FOTOS",
+      "faturamento": "TOP",
+      "positivacoes": "1 MANTO"
+    }
+  },
+  "rankingGeral": [
+    {
+      "posicao": "1º",
+      "nome": "FABIO SILVA",
+      "foto": "FABIO SILVA.png",
+      "faturamento": "R$ 4.719,20",
+      "volume": "272",
+      "positivacoes": "7"
+    },
+    {
+      "posicao": "2º",
+      "nome": "HENRIQUE RAMON",
+      "foto": "HENRIQUE RAMON.png",
+      "faturamento": "R$ 3.023,64",
+      "volume": "180",
+      "positivacoes": "8"
+    },
+    {
+      "posicao": "3º",
+      "nome": "GILDASIO GAMA (128)",
+      "foto": "GILDASIO GAMA (128).png",
+      "faturamento": "R$ 1.331,22",
+      "volume": "78",
+      "positivacoes": "4"
+    },
+    {
+      "posicao": "4º",
+      "nome": "CLARA ARAUJO",
+      "foto": "CLARA ARAUJO.png",
+      "faturamento": "R$ 970,82",
+      "volume": "62",
+      "positivacoes": "3"
+    },
+    {
+      "posicao": "5º",
+      "nome": "JONES FERNANDES",
+      "foto": "JONES FERNANDES.png",
+      "faturamento": "R$ 902,20",
+      "volume": "48",
+      "positivacoes": "2"
+    },
+    {
+      "posicao": "6º",
+      "nome": "JORGE REIS (117)",
+      "foto": "JORGE REIS (117).png",
+      "faturamento": "R$ 728,70",
+      "volume": "42",
+      "positivacoes": "2"
+    },
+    {
+      "posicao": "7º",
+      "nome": "PEDRO HENRIQUE",
+      "foto": "PEDRO HENRIQUE.png",
+      "faturamento": "R$ 555,20",
+      "volume": "32",
+      "positivacoes": "2"
+    },
+    {
+      "posicao": "8º",
+      "nome": "EDVALDO",
+      "foto": "EDVALDO.png",
+      "faturamento": "R$ 555,20",
+      "volume": "32",
+      "positivacoes": "1"
+    },
+    {
+      "posicao": "9º",
+      "nome": "HIAN RIBEIRO",
+      "foto": "HIAN RIBEIRO.png",
+      "faturamento": "R$ 485,80",
+      "volume": "28",
+      "positivacoes": "2"
+    },
+    {
+      "posicao": "10º",
+      "nome": "CESAR DIAS",
+      "foto": "CESAR DIAS.png",
+      "faturamento": "R$ 451,10",
+      "volume": "26",
+      "positivacoes": "3"
+    },
+    {
+      "posicao": "11º",
+      "nome": "JOELSON MIRANDA",
+      "foto": "JOELSON MIRANDA.png",
+      "faturamento": "R$ 313,09",
+      "volume": "19",
+      "positivacoes": "3"
+    },
+    {
+      "posicao": "12º",
+      "nome": "AGNALDO SILVA (75 99889-0341)",
+      "foto": "AGNALDO SILVA (75 99889-0341).png",
+      "faturamento": "R$ 285,49",
+      "volume": "19",
+      "positivacoes": "2"
+    },
+    {
+      "posicao": "13º",
+      "nome": "ANDRE VINAGRE (123)",
+      "foto": "ANDRE VINAGRE (123).png",
+      "faturamento": "R$ 277,60",
+      "volume": "16",
+      "positivacoes": "1"
+    },
+    {
+      "posicao": "14º",
+      "nome": "MARCOS JEAN",
+      "foto": "MARCOS JEAN.png",
+      "faturamento": "R$ 242,90",
+      "volume": "14",
+      "positivacoes": "2"
+    },
+    {
+      "posicao": "15º",
+      "nome": "JAILTON SANTOS (140)",
+      "foto": "JAILTON SANTOS (140).png",
+      "faturamento": "R$ 224,37",
+      "volume": "15",
+      "positivacoes": "2"
+    },
+    {
+      "posicao": "16º",
+      "nome": "CAMILA FERREIRA",
+      "foto": "CAMILA FERREIRA.png",
+      "faturamento": "R$ 150,00",
+      "volume": "8",
+      "positivacoes": "1"
+    },
+    {
+      "posicao": "17º",
+      "nome": "ALLYS ARAUJO",
+      "foto": "ALLYS ARAUJO.png",
+      "faturamento": "R$ 138,80",
+      "volume": "8",
+      "positivacoes": "1"
+    },
+    {
+      "posicao": "18º",
+      "nome": "CARMILTON GOMES (118)",
+      "foto": "CARMILTON GOMES (118).png",
+      "faturamento": "R$ 116,72",
+      "volume": "8",
+      "positivacoes": "2"
+    },
+    {
+      "posicao": "19º",
+      "nome": "MARIA ELIZABETE",
+      "foto": "MARIA ELIZABETE.png",
+      "faturamento": "R$ 104,10",
+      "volume": "6",
+      "positivacoes": "1"
+    },
+    {
+      "posicao": "20º",
+      "nome": "HELLEN GOMES",
+      "foto": "HELLEN GOMES.png",
+      "faturamento": "R$ 87,54",
+      "volume": "6",
+      "positivacoes": "1"
+    },
+    {
+      "posicao": "21º",
+      "nome": "ANDERSON NASCIMENTO",
+      "foto": "ANDERSON NASCIMENTO.png",
+      "faturamento": "R$ 87,54",
+      "volume": "6",
+      "positivacoes": "1"
+    },
+    {
+      "posicao": "22º",
+      "nome": "AROLDO",
+      "foto": "AROLDO.png",
+      "faturamento": "R$ 58,36",
+      "volume": "4",
+      "positivacoes": "1"
+    },
+    {
+      "posicao": "23º",
+      "nome": "PAULA RIBEIRO (101)",
+      "foto": "PAULA RIBEIRO (101).png",
+      "faturamento": "R$ 52,05",
+      "volume": "3",
+      "positivacoes": "1"
+    },
+    {
+      "posicao": "24º",
+      "nome": "EVANILSON NOVAIS (107)",
+      "foto": "EVANILSON NOVAIS (107).png",
+      "faturamento": "R$ 29,18",
+      "volume": "2",
+      "positivacoes": "1"
+    },
+    {
+      "posicao": "25º",
+      "nome": "EDENILSON FERREIRA",
+      "foto": "EDENILSON FERREIRA.png",
+      "faturamento": "R$ 14,59",
+      "volume": "1",
+      "positivacoes": "1"
+    }
+  ]
+}
