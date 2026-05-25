@@ -2,10 +2,10 @@
   "kpis": {
     "faturamentoAcumulado": "R$ 15.905,41",
     "faturamentoMeta": "R$ 150.000,00",
-    "volumeVendas": 935,
+    "volumeVendas": "935",
     "volumeMeta": "8.500",
     "pdvsAtivados": 55,
-    "pdvsMeta": 400
+    "pdvsMeta": "400"
   },
   "podio": {
     "primeiro": {
@@ -122,7 +122,7 @@
     {
       "posicao": 12,
       "nome": "AGNALDO SILVA (75 99889-0341)",
-      "foto": "agnaldo_silva_75_99889-0341.png",
+      "foto": "agnaldo_silva_75_99889_0341.png",
       "faturamento": "R$ 285,49",
       "volume": 19,
       "positivacoes": 2
