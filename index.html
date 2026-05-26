@@ -126,10 +126,16 @@
         .player-photo { width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.3s ease; }
         .jersey-overlay { position: absolute; bottom: -5px; right: -5px; width: 55px; height: 55px; object-fit: contain; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5)); border-radius: 50%; background: rgba(255,255,255,0.1); padding: 4px; }
 
+        /* Estilos para o card do promotor ainda vazio */
+        .promoter-placeholder {
+            width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: #7a94b7; text-align: center; padding: 15px; font-size: 12px; font-weight: 600;
+        }
+        .promoter-placeholder i { font-size: 40px; color: var(--mccain-yellow); margin-bottom: 10px; opacity: 0.8; }
+
         .player-info { width: 100%; text-align: center; margin-top: 10px; }
         .player-name { font-size: 13px; font-weight: 800; color: #fff; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .player-stat-row { display: flex; justify-content: space-around; width: 100%; margin-top: 8px; background: rgba(255,255,255,0.05); padding: 5px; border-radius: 4px; }
-        .grid-stats { display: flex; justify-content: space-around; width: 100%; }
         .stat-box { text-align: center; }
         .stat-val { font-size: 11px; font-weight: 700; color: var(--mccain-yellow); }
         .stat-lbl { font-size: 8px; color: #a2b7d2; text-transform: uppercase; }
@@ -155,7 +161,7 @@
         }
         .table-avatar:hover { transform: scale(1.15); border-color: var(--mccain-yellow); }
 
-        /* ==================== SISTEMA DE MODAL ==================== */
+        /* SISTEMA DE MODAL */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(2, 11, 24, 0.85); backdrop-filter: blur(8px);
@@ -177,12 +183,10 @@
         }
         .btn-close-modal:hover { transform: scale(1.05); background: #fff; }
 
-        /* Responsividade Celular */
         @media (max-width: 850px) {
             header { justify-content: center; text-align: center; padding: 15px; }
             .header-logo { justify-content: center; width: 100%; gap: 15px; }
-            .img-logo { height: 38px; }
-            .img-logo-jbs { height: 38px; }
+            .img-logo, .img-logo-jbs { height: 38px; }
             .header-info { text-align: center; width: 100%; }
             .story-banner { height: auto; min-height: 220px; flex-direction: column; padding-bottom: 50px; }
             .banner-left-zone { width: 100%; }
@@ -221,7 +225,7 @@
             </div>
             
             <div class="jersey-wrapper">
-                <img src="imagens/CAMISA.png" alt="Camisa Brasil" class="jersey-img-top" onerror="this.onerror=null; this.src='imagens/CAMISA.jpg'">
+                <img src="imagens/camisa.png" alt="Camisa Brasil" class="jersey-img-top">
             </div>
 
             <div class="banner-subtext">
@@ -248,7 +252,7 @@
             </div>
             <div class="kpi-card">
                 <div class="kpi-info">
-                    <h3>Pontos de Venda Ativados</h3>
+                    <h3>Points de Venda Ativados</h3>
                     <h4 id="kpi-pdv">0 <small>PDVs</small></h4>
                     <span id="meta-pdv">Meta JBS: 0 PDVs</span>
                 </div>
@@ -293,8 +297,8 @@
                         <span class="sticker-badge" id="modal-pos">1º</span>
                     </div>
                     <div class="player-photo-container" style="height:220px;">
-                        <img src="" id="modal-img" class="player-photo" style="opacity:0; transition: opacity 0.3s ease;">
-                        <img src="imagens/CAMISA.png" class="jersey-overlay" style="width:65px; height:65px;" onerror="this.onerror=null; this.src='imagens/CAMISA.jpg'">
+                        <img src="" id="modal-img" class="player-photo" style="opacity:1;">
+                        <img src="imagens/camisa.png" class="jersey-overlay" style="width:65px; height:65px;">
                     </div>
                     <div class="player-info">
                         <div class="player-name" id="modal-nome" style="font-size:16px; margin-bottom:5px;">NOME DO VENDEDOR</div>
@@ -315,29 +319,20 @@
         const AVATAR_PADRAO = 'https://cdn-icons-png.flaticon.com/512/5087/5087579.png';
         let dadosGlobais = null;
 
-        // Limpa espaços extras e quebras de linha invisíveis (\r) geradas pelo Windows no deploy da Vercel
-        function limparTexto(texto) {
-            if (!texto) return "";
-            return String(texto).replace(/[\r\n\t]/g, "").trim();
-        }
-
-        // Sistema inteligente de Fallback para tentar extensões maiúsculas/minúsculas antes do avatar padrão
         function carregarImagemComFallback(imgEl, nomeFoto) {
             try {
                 imgEl.onload = null;
                 imgEl.onerror = null;
             } catch(e) {}
 
-            let fotoLimpa = limparTexto(nomeFoto);
-
-            if (!fotoLimpa) {
+            if (!nomeFoto) {
                 imgEl.src = AVATAR_PADRAO;
                 imgEl.style.opacity = 0.6;
                 return;
             }
 
-            const base = fotoLimpa.includes('.') ? fotoLimpa.replace(/\.[^/.]+$/, '') : fotoLimpa;
-            const exts = ['.png', '.jpg', '.jpeg', '.webp', '.PNG', '.JPG', '.JPEG', '.WEBP'];
+            const base = nomeFoto.includes('.') ? nomeFoto.replace(/\.[^/.]+$/, '') : nomeFoto;
+            const exts = ['.png', '.jpg', '.jpeg', '.webp'];
             let i = 0;
 
             function tentar() {
@@ -353,35 +348,27 @@
                 imgEl.onerror = tentar;
                 imgEl.src = tentativa;
             }
-
             tentar();
         }
 
         async function carregarDashboard() {
             try {
                 let resposta;
-                // Força caminhos relativos e previne cache para a Vercel sempre ler o JSON atualizado
                 try {
-                    resposta = await fetch('./dados.json', { cache: "no-store" });
+                    resposta = await fetch('dados.json', { cache: "no-store" });
                     if (!resposta.ok) throw new Error('status ' + resposta.status);
                 } catch (e1) {
-                    try {
-                        resposta = await fetch('./dados.JSON', { cache: "no-store" });
-                        if (!resposta.ok) throw new Error('status ' + resposta.status);
-                    } catch (e2) {
-                        console.error('Falha ao buscar dados.json:', e1, e2);
-                        return;
-                    }
+                    resposta = await fetch('dados.JSON', { cache: "no-store" });
+                    if (!resposta.ok) throw new Error('status ' + resposta.status);
                 }
 
                 dadosGlobais = await resposta.json();
-                console.log("DADOS RECEBIDOS:", dadosGlobais);
 
                 const kpis = dadosGlobais.kpis || dadosGlobais.KPIs || {};
                 const podio = dadosGlobais.podio || dadosGlobais.Podio || {};
                 const rankingGeral = dadosGlobais.rankingGeral || dadosGlobais.RankingGeral || [];
 
-                // 1. Atualizar Placar Geral de KPIs
+                // Preencher KPIs
                 document.getElementById('kpi-fat').innerText = kpis.faturamentoAcumulado || kpis.FaturamentoAcumulado || "R$ 0,00";
                 document.getElementById('meta-fat').innerText = `Meta JBS: ${kpis.faturamentoMeta || kpis.FaturamentoMeta || "R$ 0,00"}`;
                 document.getElementById('kpi-vol').innerHTML = `${kpis.volumeVendas || kpis.VolumeVendas || 0} <small>Pacotes</small>`;
@@ -389,15 +376,14 @@
                 document.getElementById('kpi-pdv').innerHTML = `${kpis.pdvsAtivados || kpis.PdvsAtivados || 0} <small>PDVs</small>`;
                 document.getElementById('meta-pdv').innerText = `Meta JBS: ${kpis.pdvsMeta || kpis.PdvsMeta || "0"} PDVs`;
 
-                // 2. Renderizar Pódio das Figurinhas Dinamicamente
+                // Puxar Vendedores 1º e 2º lugares
                 const p1 = podio.primeiro || podio.Primeiro || {};
                 const p2 = podio.segundo  || podio.Segundo  || {};
-                const p3 = podio.terceiro || podio.Terceiro || {};
 
-                const p1Foto = limparTexto(p1.foto || p1.Foto || "");
-                const p2Foto = limparTexto(p2.foto || p2.Foto || "");
-                const p3Foto = limparTexto(p3.foto || p3.Foto || "");
+                const p1Foto = p1.foto || p1.Foto || "";
+                const p2Foto = p2.foto || p2.Foto || "";
 
+                // Renderização do Pódio (Com 3º Lugar fixado para o Promotor - Sem dados/foto)
                 const podiumHTML = `
                     <div class="world-cup-sticker sticker-2" onclick="abrirModalVendedor('segundo')">
                         <div class="sticker-inner">
@@ -406,8 +392,8 @@
                                 <span class="sticker-badge">2º</span>
                             </div>
                             <div class="player-photo-container">
-                                <img src="${PASTA_IMAGENS}${p2Foto}" class="player-photo" onload="this.style.opacity=1" onerror="carregarImagemComFallback(this, '${p2Foto}')">
-                                <img src="imagens/CAMISA.png" class="jersey-overlay" onerror="this.onerror=null; this.src='imagens/CAMISA.jpg'">
+                                <img src="${PASTA_IMAGENS}${p2Foto}" class="player-photo" onload="this.style.opacity=1" onerror="this.onerror=null; carregarImagemComFallback(this, '${p2Foto}')">
+                                <img src="imagens/camisa.png" class="jersey-overlay">
                             </div>
                             <div class="player-info">
                                 <div class="player-name">${p2.nome || p2.Nome || 'Nenhum'}</div>
@@ -427,8 +413,8 @@
                                 <span class="sticker-badge">1º</span>
                             </div>
                             <div class="player-photo-container">
-                                <img src="${PASTA_IMAGENS}${p1Foto}" class="player-photo" onload="this.style.opacity=1" onerror="carregarImagemComFallback(this, '${p1Foto}')">
-                                <img src="imagens/CAMISA.png" class="jersey-overlay" onerror="this.onerror=null; this.src='imagens/CAMISA.jpg'">
+                                <img src="${PASTA_IMAGENS}${p1Foto}" class="player-photo" onload="this.style.opacity=1" onerror="this.onerror=null; carregarImagemComFallback(this, '${p1Foto}')">
+                                <img src="imagens/camisa.png" class="jersey-overlay">
                             </div>
                             <div class="player-info">
                                 <div class="player-name">${p1.nome || p1.Nome || 'Nenhum'}</div>
@@ -441,22 +427,23 @@
                         </div>
                     </div>
 
-                    <div class="world-cup-sticker sticker-3" onclick="abrirModalVendedor('terceiro')">
+                    <div class="world-cup-sticker sticker-3" style="cursor: default;">
                         <div class="sticker-inner">
                             <div class="sticker-header">
-                                <span class="sticker-country">BRASIL</span>
+                                <span class="sticker-country">PROMOTOR</span>
                                 <span class="sticker-badge">3º</span>
                             </div>
                             <div class="player-photo-container">
-                                <img src="${PASTA_IMAGENS}${p3Foto}" class="player-photo" onload="this.style.opacity=1" onerror="carregarImagemComFallback(this, '${p3Foto}')">
-                                <img src="imagens/CAMISA.png" class="jersey-overlay" onerror="this.onerror=null; this.src='imagens/CAMISA.jpg'">
+                                <div class="promoter-placeholder">
+                                    <i class="fa-solid fa-star-half-stroke"></i>
+                                    MELHOR EXECUÇÃO
+                                </div>
+                                <img src="imagens/camisa.png" class="jersey-overlay">
                             </div>
                             <div class="player-info">
-                                <div class="player-name">${p3.nome || p3.Nome || 'Nenhum'}</div>
-                                <div class="player-stat-row">
-                                    <div class="stat-box"><div class="stat-val">${p3.volume || p3.Volume || 0}</div><div class="stat-lbl">VOL</div></div>
-                                    <div class="stat-box"><div class="stat-val">${p3.faturamento || p3.Faturamento || 0}</div><div class="stat-lbl">FAT</div></div>
-                                    <div class="stat-box"><div class="stat-val">${p3.positivacoes || p3.Positivacoes || 0}</div><div class="stat-lbl">POS</div></div>
+                                <div class="player-name" style="color: var(--mccain-yellow); font-size:12px;">AVALIAÇÃO POSTERIOR</div>
+                                <div class="player-stat-row" style="background: transparent; justify-content: center;">
+                                    <span style="font-size: 10px; color:#a2b7d2; font-style: italic;">A definir por auditoria</span>
                                 </div>
                             </div>
                         </div>
@@ -464,12 +451,12 @@
                 `;
                 document.getElementById('podium-container').innerHTML = podiumHTML;
 
-                // 3. Renderizar Linhas da Tabela Classificatória Geral
+                // Tabela do Ranking Geral
                 let tabelaHTML = '';
                 rankingGeral.forEach((item, index) => {
                     let r_pos = item.posicao || item.Posicao || (index + 1);
                     let r_nome = item.nome || item.Nome || "";
-                    let r_foto = limparTexto(item.foto || item.Foto || "");
+                    let r_foto = item.foto || item.Foto || "";
                     let r_fat = item.faturamento || item.Faturamento || "R$ 0";
                     let r_vol = item.volume || item.Volume || 0;
                     let r_posi = item.positivacoes || item.Positivacoes || 0;
@@ -479,7 +466,7 @@
                             <td class="row-position">${r_pos}º</td>
                             <td>
                                 <div class="vendedor-flex">
-                                    <img src="${PASTA_IMAGENS}${r_foto}" class="table-avatar" onclick="abrirModalPorPosicao(${index})" onerror="carregarImagemComFallback(this, '${r_foto}')" title="Clique para ver a figurinha">
+                                    <img src="${PASTA_IMAGENS}${r_foto}" class="table-avatar" onclick="abrirModalPorPosicao(${index})" onerror="this.onerror=null; carregarImagemComFallback(this, '${r_foto}')" title="Clique para ver a figurinha">
                                     <span style="font-weight:600; color:#fff;">${r_nome}</span>
                                 </div>
                             </td>
@@ -496,15 +483,15 @@
             }
         }
 
-        /* CONTROLE INTERATIVO DO MODAL POPUP */
         function abrirModalVendedor(posicaoPodio) {
             if(!dadosGlobais) return;
             const podio = dadosGlobais.podio || dadosGlobais.Podio || {};
             let objVendedor = {};
-            if (posicaoPodio === 'primeiro' || posicaoPodio === '1º' || posicaoPodio === '1') objVendedor = podio.primeiro || podio.Primeiro || {};
-            else if (posicaoPodio === 'segundo' || posicaoPodio === '2º' || posicaoPodio === '2') objVendedor = podio.segundo || podio.Segundo || {};
-            else if (posicaoPodio === 'terceiro' || posicaoPodio === '3º' || posicaoPodio === '3') objVendedor = podio.terceiro || podio.Terceiro || {};
-            preencherEExibirModal(objVendedor, (posicaoPodio === 'primeiro'?'1º':(posicaoPodio==='segundo'?'2º':(posicaoPodio==='terceiro'?'3º':posicaoPodio))));
+            if (posicaoPodio === 'primeiro') objVendedor = podio.primeiro || podio.Primeiro || {};
+            else if (posicaoPodio === 'segundo') objVendedor = podio.segundo || podio.Segundo || {};
+            else return; // Não faz nada se clicarem no terceiro, pois é o placeholder do promotor
+            
+            preencherEExibirModal(objVendedor, (posicaoPodio === 'primeiro'?'1º':'2º'));
         }
 
         function abrirModalPorPosicao(indexTabela) {
@@ -517,17 +504,22 @@
 
         function preencherEExibirModal(vendedor, txtColocacao) {
             document.getElementById('modal-pos').innerText = txtColocacao;
-            document.getElementById('modal-nome').innerText = sellerName = vendedor.nome || vendedor.Nome || "Não encontrado";
+            document.getElementById('modal-nome').innerText = sellerNameFormat(vendedor.nome || vendedor.Nome || "Não encontrado");
             document.getElementById('modal-vol-val').innerText = vendedor.volume || vendedor.Volume || "0";
             document.getElementById('modal-fat-val').innerText = vendedor.faturamento || vendedor.Faturamento || "R$ 0";
             document.getElementById('modal-pos-val').innerText = vendedor.positivacoes || vendedor.Positivacoes || "0";
             
             const imgModal = document.getElementById('modal-img');
             imgModal.style.opacity = 0;
-            const fotoNome = limparTexto(vendedor.foto || vendedor.Foto || "");
+            const fotoNome = vendedor.foto || vendedor.Foto || "";
             carregarImagemComFallback(imgModal, fotoNome);
 
             document.getElementById('stickerModal').classList.add('active');
+        }
+
+        function sellerNameFormat(nome) {
+            // Remove IDs adicionais como (128) se houver na exibição do modal
+            return nome.split('(')[0].trim();
         }
 
         function fecharModal() {
@@ -535,12 +527,9 @@
         }
 
         function fecharModalNoFundo(e) {
-            if(e.target.id === "stickerModal") {
-                fecharModal();
-            }
+            if(e.target.id === "stickerModal") fecharModal();
         }
 
-        // Iniciar carregamento automático
         window.onload = carregarDashboard;
 
         function toggleRanking() {
