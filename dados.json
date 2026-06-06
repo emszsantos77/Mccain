@@ -1,36 +1,36 @@
 {
     "kpis": {
-        "faturamentoAcumulado": "R$ 74.190,21",
-        "faturamentoMeta": "R$ 85.318,74",
-        "volumeVendas": 4385,
-        "volumeMeta": "4.823",
-        "pdvsAtivados": 204,
-        "pdvsMeta": 214
+        "faturamentoAcumulado": "R$ 105.752,09",
+        "faturamentoMeta": "R$ 121.614,90",
+        "volumeVendas": 6270,
+        "volumeMeta": "6.897",
+        "pdvsAtivados": 334,
+        "pdvsMeta": 350
     },
     "podio": {
         "primeiro": {
             "posicao": 1,
             "nome": "MATHEUS RIBEIRO",
             "foto": "35.png",
-            "faturamento": "R$ 28.112,07",
-            "volume": 1631,
-            "positivacoes": 12
+            "faturamento": "R$ 28.877,84",
+            "volume": 1678,
+            "positivacoes": 15
         },
         "segundo": {
             "posicao": 2,
             "nome": "HENRIQUE RAMON",
             "foto": "72.png",
-            "faturamento": "R$ 6.481,34",
-            "volume": 378,
-            "positivacoes": 21
+            "faturamento": "R$ 10.739,94",
+            "volume": 622,
+            "positivacoes": 34
         },
         "terceiro": {
             "posicao": 3,
-            "nome": "FABIO SILVA",
-            "foto": "31.png",
-            "faturamento": "R$ 5.274,40",
-            "volume": 304,
-            "positivacoes": 8
+            "nome": "JONES FERNANDES",
+            "foto": "20.png",
+            "faturamento": "R$ 6.855,09",
+            "volume": 398,
+            "positivacoes": 18
         }
     },
     "rankingGeral": [
@@ -38,20 +38,36 @@
             "posicao": 1,
             "nome": "MATHEUS RIBEIRO",
             "foto": "35.png",
-            "faturamento": "R$ 28.112,07",
-            "volume": 1631,
-            "positivacoes": 12
+            "faturamento": "R$ 28.877,84",
+            "volume": 1678,
+            "positivacoes": 15
         },
         {
             "posicao": 2,
             "nome": "HENRIQUE RAMON",
             "foto": "72.png",
-            "faturamento": "R$ 6.481,34",
-            "volume": 378,
-            "positivacoes": 21
+            "faturamento": "R$ 10.739,94",
+            "volume": 622,
+            "positivacoes": 34
         },
         {
             "posicao": 3,
+            "nome": "JONES FERNANDES",
+            "foto": "20.png",
+            "faturamento": "R$ 6.855,09",
+            "volume": 398,
+            "positivacoes": 18
+        },
+        {
+            "posicao": 4,
+            "nome": "MARIA ELIZABETE",
+            "foto": "84.png",
+            "faturamento": "R$ 5.438,06",
+            "volume": 326,
+            "positivacoes": 29
+        },
+        {
+            "posicao": 5,
             "nome": "FABIO SILVA",
             "foto": "31.png",
             "faturamento": "R$ 5.274,40",
@@ -59,95 +75,135 @@
             "positivacoes": 8
         },
         {
-            "posicao": 4,
-            "nome": "JONES FERNANDES",
-            "foto": "20.png",
-            "faturamento": "R$ 3.513,78",
-            "volume": 204,
-            "positivacoes": 10
-        },
-        {
-            "posicao": 5,
-            "nome": "GILDASIO GAMA (128)",
-            "foto": "128.png",
-            "faturamento": "R$ 2.999,59",
-            "volume": 181,
-            "positivacoes": 16
-        },
-        {
             "posicao": 6,
-            "nome": "CLARA ARAUJO",
-            "foto": "91.png",
-            "faturamento": "R$ 2.884,58",
-            "volume": 182,
-            "positivacoes": 6
+            "nome": "HIAN RIBEIRO",
+            "foto": "10.png",
+            "faturamento": "R$ 3.817,00",
+            "volume": 220,
+            "positivacoes": 14
         },
         {
             "posicao": 7,
             "nome": "LARISSA MENDES",
             "foto": "90.png",
-            "faturamento": "R$ 2.324,52",
-            "volume": 144,
-            "positivacoes": 9
+            "faturamento": "R$ 3.768,13",
+            "volume": 235,
+            "positivacoes": 12
         },
         {
             "posicao": 8,
-            "nome": "PEDRO HENRIQUE",
-            "foto": "8.png",
-            "faturamento": "R$ 2.119,86",
-            "volume": 126,
-            "positivacoes": 7
+            "nome": "CLARA ARAUJO",
+            "foto": "91.png",
+            "faturamento": "R$ 3.568,33",
+            "volume": 223,
+            "positivacoes": 8
         },
         {
             "posicao": 9,
-            "nome": "CAMILA FERREIRA",
-            "foto": "2.png",
-            "faturamento": "R$ 1.853,46",
-            "volume": 110,
-            "positivacoes": 8
+            "nome": "GILDASIO GAMA (128)",
+            "foto": "128.png",
+            "faturamento": "R$ 3.087,13",
+            "volume": 187,
+            "positivacoes": 17
         },
         {
             "posicao": 10,
             "nome": "JORGE REIS (117)",
             "foto": "117.png",
-            "faturamento": "R$ 1.743,68",
-            "volume": 104,
-            "positivacoes": 6
+            "faturamento": "R$ 2.943,20",
+            "volume": 176,
+            "positivacoes": 12
         },
         {
             "posicao": 11,
-            "nome": "MARIA ELIZABETE",
-            "foto": "84.png",
-            "faturamento": "R$ 1.604,88",
-            "volume": 96,
-            "positivacoes": 13
+            "nome": "CAMILA FERREIRA",
+            "foto": "2.png",
+            "faturamento": "R$ 2.773,01",
+            "volume": 163,
+            "positivacoes": 12
         },
         {
             "posicao": 12,
-            "nome": "HIAN RIBEIRO",
-            "foto": "10.png",
-            "faturamento": "R$ 1.457,40",
-            "volume": 84,
-            "positivacoes": 5
+            "nome": "PEDRO HENRIQUE",
+            "foto": "8.png",
+            "faturamento": "R$ 2.660,08",
+            "volume": 160,
+            "positivacoes": 8
         },
         {
             "posicao": 13,
             "nome": "JOELSON MIRANDA",
             "foto": "88.png",
-            "faturamento": "R$ 1.294,95",
-            "volume": 81,
-            "positivacoes": 7
+            "faturamento": "R$ 2.612,77",
+            "volume": 163,
+            "positivacoes": 12
         },
         {
             "posicao": 14,
-            "nome": "PAULA RIBEIRO (101)",
-            "foto": "101.png",
-            "faturamento": "R$ 1.147,47",
-            "volume": 69,
-            "positivacoes": 4
+            "nome": "EVANILSON NOVAIS (107)",
+            "foto": "107.png",
+            "faturamento": "R$ 2.570,18",
+            "volume": 158,
+            "positivacoes": 14
         },
         {
             "posicao": 15,
+            "nome": "PAULA RIBEIRO (101)",
+            "foto": "101.png",
+            "faturamento": "R$ 1.899,44",
+            "volume": 116,
+            "positivacoes": 7
+        },
+        {
+            "posicao": 16,
+            "nome": "CLAUBELINO SANTOS (125)",
+            "foto": "125.png",
+            "faturamento": "R$ 1.795,34",
+            "volume": 110,
+            "positivacoes": 7
+        },
+        {
+            "posicao": 17,
+            "nome": "EDENILSON FERREIRA",
+            "foto": "131.png",
+            "faturamento": "R$ 1.733,83",
+            "volume": 109,
+            "positivacoes": 10
+        },
+        {
+            "posicao": 18,
+            "nome": "CESAR DIAS",
+            "foto": "15.png",
+            "faturamento": "R$ 1.400,62",
+            "volume": 82,
+            "positivacoes": 8
+        },
+        {
+            "posicao": 19,
+            "nome": "ANDERSON NASCIMENTO",
+            "foto": "114.png",
+            "faturamento": "R$ 1.268,13",
+            "volume": 75,
+            "positivacoes": 5
+        },
+        {
+            "posicao": 20,
+            "nome": "EDVALDO",
+            "foto": "17.png",
+            "faturamento": "R$ 1.110,40",
+            "volume": 64,
+            "positivacoes": 3
+        },
+        {
+            "posicao": 21,
+            "nome": "CAIO VINICIUS",
+            "foto": "3.png",
+            "faturamento": "R$ 1.093,05",
+            "volume": 63,
+            "positivacoes": 7
+        },
+        {
+            "posicao": 22,
             "nome": "ILMA MOURA",
             "foto": "18.png",
             "faturamento": "R$ 1.065,46",
@@ -155,103 +211,79 @@
             "positivacoes": 1
         },
         {
-            "posicao": 16,
-            "nome": "CAIO VINICIUS",
-            "foto": "3.png",
-            "faturamento": "R$ 936,90",
-            "volume": 54,
-            "positivacoes": 4
-        },
-        {
-            "posicao": 17,
-            "nome": "EVANILSON NOVAIS (107)",
-            "foto": "107.png",
-            "faturamento": "R$ 899,05",
-            "volume": 55,
-            "positivacoes": 5
-        },
-        {
-            "posicao": 18,
+            "posicao": 23,
             "nome": "AGNALDO SILVA (75 99889-0341)",
             "foto": "172.png",
-            "faturamento": "R$ 883,28",
-            "volume": 56,
-            "positivacoes": 6
-        },
-        {
-            "posicao": 19,
-            "nome": "EDVALDO",
-            "foto": "17.png",
-            "faturamento": "R$ 832,80",
-            "volume": 48,
-            "positivacoes": 2
-        },
-        {
-            "posicao": 20,
-            "nome": "ALLYS ARAUJO",
-            "foto": "97.png",
-            "faturamento": "R$ 728,70",
-            "volume": 42,
-            "positivacoes": 3
-        },
-        {
-            "posicao": 21,
-            "nome": "CESAR DIAS",
-            "foto": "15.png",
-            "faturamento": "R$ 728,70",
-            "volume": 42,
-            "positivacoes": 4
-        },
-        {
-            "posicao": 22,
-            "nome": "CARMILTON GOMES (118)",
-            "foto": "118.png",
-            "faturamento": "R$ 591,84",
-            "volume": 36,
+            "faturamento": "R$ 1.042,98",
+            "volume": 66,
             "positivacoes": 8
         },
         {
-            "posicao": 23,
-            "nome": "JAILTON SANTOS (140)",
-            "foto": "140.png",
-            "faturamento": "R$ 549,04",
-            "volume": 34,
-            "positivacoes": 4
-        },
-        {
             "posicao": 24,
-            "nome": "EDENILSON FERREIRA",
-            "foto": "131.png",
-            "faturamento": "R$ 539,43",
-            "volume": 33,
-            "positivacoes": 3
+            "nome": "ALLYS ARAUJO",
+            "foto": "97.png",
+            "faturamento": "R$ 1.006,30",
+            "volume": 58,
+            "positivacoes": 4
         },
         {
             "posicao": 25,
-            "nome": "MARCOS JEAN",
-            "foto": "109.png",
-            "faturamento": "R$ 521,29",
-            "volume": 31,
-            "positivacoes": 4
+            "nome": "CARMILTON GOMES (118)",
+            "foto": "118.png",
+            "faturamento": "R$ 969,94",
+            "volume": 58,
+            "positivacoes": 9
         },
         {
             "posicao": 26,
-            "nome": "DIEGO SILVA",
-            "foto": "12.png",
-            "faturamento": "R$ 406,56",
-            "volume": 24,
-            "positivacoes": 3
+            "nome": "HELLEN GOMES",
+            "foto": "47.png",
+            "faturamento": "R$ 849,76",
+            "volume": 52,
+            "positivacoes": 7
         },
         {
             "posicao": 27,
-            "nome": "AROLDO",
-            "foto": "7.png",
-            "faturamento": "R$ 384,86",
-            "volume": 26,
-            "positivacoes": 4
+            "nome": "JAILTON SANTOS (140)",
+            "foto": "140.png",
+            "faturamento": "R$ 739,89",
+            "volume": 45,
+            "positivacoes": 6
         },
         {
             "posicao": 28,
+            "nome": "DIEGO SILVA",
+            "foto": "12.png",
+            "faturamento": "R$ 725,96",
+            "volume": 44,
+            "positivacoes": 5
+        },
+        {
+            "posicao": 29,
+            "nome": "MARCOS JEAN",
+            "foto": "109.png",
+            "faturamento": "R$ 721,21",
+            "volume": 43,
+            "positivacoes": 6
+        },
+        {
+            "posicao": 30,
+            "nome": "AROLDO",
+            "foto": "7.png",
+            "faturamento": "R$ 699,53",
+            "volume": 47,
+            "positivacoes": 7
+        },
+        {
+            "posicao": 31,
+            "nome": "TADEU SANTOS",
+            "foto": "139.png",
+            "faturamento": "R$ 659,30",
+            "volume": 38,
+            "positivacoes": 6
+        },
+        {
+            "posicao": 32,
             "nome": "ANDRE VINAGRE (123)",
             "foto": "123.png",
             "faturamento": "R$ 381,70",
@@ -259,23 +291,15 @@
             "positivacoes": 2
         },
         {
-            "posicao": 29,
-            "nome": "TADEU SANTOS",
-            "foto": "139.png",
-            "faturamento": "R$ 347,00",
-            "volume": 20,
-            "positivacoes": 5
-        },
-        {
-            "posicao": 30,
-            "nome": "CLAUBELINO SANTOS (125)",
-            "foto": "125.png",
-            "faturamento": "R$ 334,78",
-            "volume": 22,
+            "posicao": 33,
+            "nome": "GABRIEL SODRE (120)",
+            "foto": "120.png",
+            "faturamento": "R$ 277,60",
+            "volume": 16,
             "positivacoes": 3
         },
         {
-            "posicao": 31,
+            "posicao": 34,
             "nome": "BEATRIZ",
             "foto": "94.png",
             "faturamento": "R$ 277,60",
@@ -283,15 +307,23 @@
             "positivacoes": 1
         },
         {
-            "posicao": 32,
-            "nome": "HELLEN GOMES",
-            "foto": "47.png",
-            "faturamento": "R$ 215,30",
-            "volume": 14,
-            "positivacoes": 3
+            "posicao": 35,
+            "nome": "WESCKEY FONTES",
+            "foto": "34.png",
+            "faturamento": "R$ 243,69",
+            "volume": 15,
+            "positivacoes": 2
         },
         {
-            "posicao": 33,
+            "posicao": 36,
+            "nome": "UELINTON MENDES",
+            "foto": "44.png",
+            "faturamento": "R$ 242,90",
+            "volume": 14,
+            "positivacoes": 2
+        },
+        {
+            "posicao": 37,
             "nome": "JEFERSON SILVA (130)",
             "foto": "130.png",
             "faturamento": "R$ 145,90",
@@ -299,15 +331,15 @@
             "positivacoes": 1
         },
         {
-            "posicao": 34,
-            "nome": "UELINTON MENDES",
-            "foto": "44.png",
-            "faturamento": "R$ 138,80",
-            "volume": 8,
+            "posicao": 38,
+            "nome": "DAGMAR SILVA (75 98201-9217)",
+            "foto": "171.png",
+            "faturamento": "R$ 104,10",
+            "volume": 6,
             "positivacoes": 1
         },
         {
-            "posicao": 35,
+            "posicao": 39,
             "nome": "JULIETE LIMA (122)",
             "foto": "122.png",
             "faturamento": "R$ 104,10",
@@ -315,15 +347,7 @@
             "positivacoes": 1
         },
         {
-            "posicao": 36,
-            "nome": "JAMILE GONCALVES",
-            "foto": "48.png",
-            "faturamento": "R$ 104,10",
-            "volume": 6,
-            "positivacoes": 1
-        },
-        {
-            "posicao": 37,
+            "posicao": 40,
             "nome": "SHEILLA MARIANO",
             "foto": "124.png",
             "faturamento": "R$ 104,10",
@@ -331,19 +355,11 @@
             "positivacoes": 1
         },
         {
-            "posicao": 38,
-            "nome": "ANDERSON NASCIMENTO",
-            "foto": "114.png",
-            "faturamento": "R$ 87,54",
+            "posicao": 41,
+            "nome": "JAMILE GONCALVES",
+            "foto": "48.png",
+            "faturamento": "R$ 104,10",
             "volume": 6,
-            "positivacoes": 1
-        },
-        {
-            "posicao": 39,
-            "nome": "GABRIEL SODRE (120)",
-            "foto": "120.png",
-            "faturamento": "R$ 69,40",
-            "volume": 4,
             "positivacoes": 1
         }
     ]
